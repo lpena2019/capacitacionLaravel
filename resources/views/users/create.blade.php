@@ -15,7 +15,6 @@
 
     {!! Field::text('name', null, ['label'=>'Nombre','placeholder'=>'Ingrese el nombre']) !!}
     {!! Field::textarea('description', null, ['label'=>'Descripcion','placeholder'=>'Ingrese la descripcion']) !!}
-   
     {!!Form::submit('PROCESAR',['class'=>'btn btn-primary'])!!}
 
 {!! Form::close() !!}

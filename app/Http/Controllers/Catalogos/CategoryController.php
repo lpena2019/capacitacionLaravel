@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Facades\App\Core\Facades\AlertCustom;
 
+
 class CategoryController extends Controller
 {
     /**
