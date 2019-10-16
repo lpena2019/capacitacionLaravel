@@ -18,4 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/get-file/{file}',function(){
+    //las rutas es es unico lugar donde no va el / va directo
+   if(Storage::disk('public')->exists('photos-articles/'.$file)){
+        return Response::make(Storage::disk('public')->get('photos-article/'.$file), '200');
+   }
+})->name('get-image');
 

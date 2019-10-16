@@ -8,5 +8,15 @@
     <div class="alert alert-danger" role="alert">
         {{session('error')}}
     </div>
+    @endif
+
+    @if ($errors->any())
+    <div class="alertFooter alertFooter-danger">
+       <ul>
+         @foreach($errors->all() as $error)
+            <li class="text-while">{{ $error }} </li>
+         @endforeach
+       <ul> 
+    </div>
     @endif    
 </div>

@@ -30,3 +30,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(".alertFooter").fadeTo(2000, 2000).slideUp(800, function(){
+    $(".alertFooter").slideUp(800);
+});

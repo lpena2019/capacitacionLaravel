@@ -49359,6 +49359,9 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(".alertFooter").fadeTo(2000, 2000).slideUp(800, function () {
+  $(".alertFooter").slideUp(800);
+});
 
 /***/ }),
 

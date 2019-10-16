@@ -15,7 +15,7 @@
             {!! Field::textarea('description', null,['label'=>'Descripcion','rows'=>4]) !!}
             {!! Field::select('category_id',$categories,null,['label'=>'Categoria',
                                                                'empty'=>'-SELECCIONE-']) !!}
-             {!! Field::file('resources',['multiple'=>'true','label'=>'Recursos/Imagenes','accept'=>'image/*']) !!}
+             {!! Field::file('resources[]',['multiple'=>'true','label'=>'Recursos/Imagenes','accept'=>'image/*']) !!}
              {!! Form::submit('GUARDAR',['class'=>'btn btn-primary btn-block']) !!}
         {!! Form::Close() !!}
     </div>

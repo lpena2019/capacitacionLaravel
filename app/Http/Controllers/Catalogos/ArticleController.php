@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Catalogos;
 
-use App\Core\Elonquent\{Article,Category};
+use App\Core\Elonquent\{Article,Category,Resource};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
+
+use Facades\App\Core\Facades\AlertCustom;
+use DB;
 
 class ArticleController extends Controller
 {
@@ -40,10 +43,19 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        //
+        DB::transaction(function() use ($request){
+            $objArticle = Article::create($request->validated());
+            $objArticle->resources()->saveMany((new Resource)->assign($request->file('resources')));
+        });
         //dd($request);
-        $objArticle = Article::create($request->validated());
-
+        //$objArticle = Article::create($request->validated());
+        //invocamos a la funcion resources de la clase Resource
+        //guardo varios recursos a la vez
+        //$objArticle->resources()->saveMany((new Resource)->assign($request->file('resources')));
+        
+        //retornamos una redireccion
+        AlertCustom::success('Guardado correcatamente');
+        return redirect()->route('categories.index');
     }
 
     /**

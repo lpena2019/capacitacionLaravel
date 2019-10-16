@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ImagesRule;
 
 class ArticleRequest extends FormRequest
 {
@@ -25,12 +26,19 @@ class ArticleRequest extends FormRequest
     {
         //reglas de validacion
         //si existe en otra base de datos se pone el nombre de la base exists:pgsl
-        return [
+      /*  return [
             'name'=>'required|min:7',
-            'name'=>'required|min:7|max:200',
+            'description'=>'required|min:7|max:200',
             'category_id' =>'required|numeric|exists:categories,id',
-            'resources'=>'required|array',
+            'resources'=>'required',
             'resources.*'=>'image|mimes:jpeg,png'
+        ];*/
+
+          return [
+            'name'=>'required|min:7',
+            'description'=>'required|min:7|max:200',
+            'category_id' =>'required|numeric|exists:categories,id',
+            'resources'=>['required',new ImagesRule()]
         ];
     }
 }
